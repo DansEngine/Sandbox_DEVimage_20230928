@@ -2,6 +2,7 @@
 //
 int DisplayHeight, DisplayWidth ;
 float BGimageX, BGimageY, BGimageW, BGimageH;
+PImage picBackground;
 //
 void setup () {
   fullScreen(); //displayWidth, displayHeight
@@ -15,6 +16,7 @@ void setup () {
   BGimageY = DisplayHeight*0 ;
   BGimageW = DisplayWidth-1 ;
   BGimageH = DisplayHeight-1 ;
+  picBackground = loadImage ("../ImagesUsed/LandScape/photo-1503614472-8c93d56e92ce.jpg");
   //
   //population
   //
@@ -24,8 +26,7 @@ void setup () {
 } //END
 //
 void draw() {
-  //image();
-  //rect();
+  image( picBackground, BGimageX, BGimageY, BGimageW, BGimageH );
   //
 } //END DRAW
 //
