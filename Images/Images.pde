@@ -7,7 +7,8 @@ Boolean nightmode = false; //Note: clock and turn on automatically
 
 //
 void setup () {
-  fullScreen(); //displayWidth, displayHeight
+  size (820, 620);
+  //fullScreen(); //displayWidth, displayHeight
   //size(X>Y, Y<X); //landscape
   //Copy Display Orientation
   DisplayWidth = displayWidth ;
@@ -35,15 +36,30 @@ void draw() {
   //background(255);
   rect( BGimageX, BGimageY, BGimageW, BGimageH );
   //
-  if (  ) tint(255, 255); //Gray scale: 1/2 (i.e 128/256= 1/2)
-  if (  ) tint(64, 64, 40); //Gray scale: (rgb)
+  // ( [BRIGHTNESS, see keyPressed] ) tint(255, 255); //Gray scale: 1/2 (i.e 128/256= 1/2)
+  if ( nightmode==true ) tint(250, 242, 3); //Gray scale: (rgb)
+  if ( nightmode==true ) { 
+  tint(250, 242, 3);
+  println(nightmode);
+  } else {
+  noTint(); //See Processing DOC
+  println(nightmode);
+  }
   image( picBackground, BGimageX, BGimageY, BGimageW, BGimageH );
   //
 } //END DRAW
 //
 void keyPressed() {
   //Brightness
-  //Nightmode, basic control is Boolean
+  //
+  if ( key=='p' || key=='P' ) {
+  if (nightmode==true) { //Nightmode, basic control is Boolean
+    nightmode = false;
+  } else {
+    nightmode = true;
+  }
+ }
+  //
 } //END KP
 //
 void mousePressed() {
