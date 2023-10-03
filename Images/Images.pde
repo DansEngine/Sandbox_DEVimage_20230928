@@ -4,7 +4,8 @@ int DisplayHeight, DisplayWidth ;
 float BGimageX, BGimageY, BGimageW, BGimageH;
 PImage picBackground;
 Boolean nightmode = false; //Note: clock and turn on automatically
-
+Boolean brightnessControl = false; //Note: arrow
+int brightnessNumber=255; //range: 1-255
 //
 void setup () {
   size (820, 620);
@@ -37,6 +38,7 @@ void draw() {
   rect( BGimageX, BGimageY, BGimageW, BGimageH );
   //
   // ( [BRIGHTNESS, see keyPressed] ) tint(255, 255); //Gray scale: 1/2 (i.e 128/256= 1/2)
+  if ( brightnessControl==true) tint(255, brightnessNumber);
   if ( nightmode==true ) tint(250, 242, 3); //Gray scale: (rgb)
   if ( nightmode==true ) { 
   tint(250, 242, 3);
@@ -50,8 +52,6 @@ void draw() {
 } //END DRAW
 //
 void keyPressed() {
-  //Brightness
-  //
   if ( key=='p' || key=='P' ) {
   if (nightmode==true) { //Nightmode, basic control is Boolean
     nightmode = false;
@@ -59,6 +59,12 @@ void keyPressed() {
     nightmode = true;
   }
  }
+  //Brightness : ARROWS activate birghtnessControl, never off
+  //Note: nightmode doees turn off
+  if ( [special keybind] ) { //brightness keybind
+  brightnessControl = true;
+  //Continued tomorow
+  }
   //
 } //END KP
 //
