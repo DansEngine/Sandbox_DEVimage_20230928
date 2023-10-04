@@ -38,17 +38,27 @@ void draw() {
   rect( BGimageX, BGimageY, BGimageW, BGimageH );
   //
   // ( [BRIGHTNESS, see keyPressed] ) tint(255, 255); //Gray scale: 1/2 (i.e 128/256= 1/2)
-  if ( brightnessControl==true) tint(255, brightnessNumber);
-  if ( nightmode==true ) tint(250, 242, 3); //Gray scale: (rgb)
+  //if ( nightmode==true ) tint(250, 242, 3); //Gray scale: (rgb)
   if ( nightmode==true ) { 
   tint(250, 242, 3);
-  println(nightmode);
+  //println(nightmode);
   } else {
   noTint(); //See Processing DOC
-  println(nightmode);
+  //println(nightmode);
   }
   image( picBackground, BGimageX, BGimageY, BGimageW, BGimageH );
   //
+  if ( brightnessControl==true) tint(255, brightnessNumber);
+  if ( brightnessNumber<1 ) {
+    brightnessNumber=1; 
+   } else if (
+     brightnessNumber>255 ) {
+       brightnessNumber=255; 
+  } else { 
+    //EMPTY ELSE ; Console
+   tint(255, brightnessNumber);
+   println ( brightnessNumber);
+ }
 } //END DRAW
 //
 void keyPressed() {
@@ -67,6 +77,8 @@ void keyPressed() {
   if ( key==CODED && keyCode==DOWN ) brightnessNumber-- ; //brightnessNumber -=1 // brightnessNumber = brightnessNumber-1
   //Continued tomorow
   }
+  //
+  println(brightnessNumber);
   //
 } //END KP
 //
