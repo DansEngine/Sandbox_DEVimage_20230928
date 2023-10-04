@@ -38,7 +38,7 @@ void draw() {
   rect( BGimageX, BGimageY, BGimageW, BGimageH );
   //
   // ( [BRIGHTNESS, see keyPressed] ) tint(255, 255); //Gray scale: 1/2 (i.e 128/256= 1/2)
-  //if ( nightmode==true ) tint(250, 242, 3); //Gray scale: (rgb)
+  if ( nightmode==true ) tint(250, 242, 3); //Gray scale: (rgb)
   if ( nightmode==true ) { 
   tint(250, 242, 3);
   //println(nightmode);
@@ -56,8 +56,8 @@ void draw() {
        brightnessNumber=255; 
   } else { 
     //EMPTY ELSE ; Console
-   tint(255, brightnessNumber);
-   println ( brightnessNumber);
+   tint(255, brightnessNumber );
+   println ( brightnessNumber );
  }
 } //END DRAW
 //
