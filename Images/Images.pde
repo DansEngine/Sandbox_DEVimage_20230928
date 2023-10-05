@@ -46,7 +46,6 @@ void draw() {
   noTint(); //See Processing DOC
   //println(nightmode);
   }
-  image( picBackground, BGimageX, BGimageY, BGimageW, BGimageH );
   //
   if ( brightnessControl==true) tint(255, brightnessNumber);
   if ( brightnessNumber<1 ) {
@@ -59,6 +58,7 @@ void draw() {
    tint(255, brightnessNumber );
    println ( brightnessNumber );
  }
+ image( picBackground, BGimageX, BGimageY, BGimageW, BGimageH );
 } //END DRAW
 //
 void keyPressed() {
