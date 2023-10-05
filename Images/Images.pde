@@ -23,6 +23,17 @@ void setup () {
   picBackground = loadImage ("../ImagesUsed/LandScape/photo-1503614472-8c93d56e92ce.jpg");
   //
   //population
+  //nightmode = false
+  int hourNightmode = hour ();
+  println(hourNightmode);
+  if ( hourNightmode>17 {
+    nightmode=true;
+  } else if ( nightmode<05 ) {
+    nightmode=true;
+  } else {
+    nightmode=false;
+    println (nightmode);
+  }
   //
   //DIVs
   //rect( BGimageX, BGimageY, BGimageW, BGimageH );
@@ -38,7 +49,6 @@ void draw() {
   rect( BGimageX, BGimageY, BGimageW, BGimageH );
   //
   // ( [BRIGHTNESS, see keyPressed] ) tint(255, 255); //Gray scale: 1/2 (i.e 128/256= 1/2)
-  if ( nightmode==true ) tint(250, 242, 3); //Gray scale: (rgb)
   if ( nightmode==true ) { 
   tint(250, 242, 3);
   //println(nightmode);
@@ -58,6 +68,8 @@ void draw() {
    tint(255, brightnessNumber );
    println ( brightnessNumber );
  }
+ background ( 0 );
+ if ( nightmode==true ) tint(250, 242, 3); //Gray scale: (rgb)
  image( picBackground, BGimageX, BGimageY, BGimageW, BGimageH );
 } //END DRAW
 //
