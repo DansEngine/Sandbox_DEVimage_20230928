@@ -2,7 +2,7 @@
 //
 int DisplayHeight, DisplayWidth ;
 float BGimageX, BGimageY, BGimageW, BGimageH;
-PImage picBackground;
+PImage picBackground, rogWall, CPU;
 Boolean nightmode = false; //Note: clock and turn on automatically
 Boolean brightnessControl = false; //Note: arrow
 int brightnessNumber=255; //range: 1-255
@@ -20,15 +20,23 @@ void setup () {
   BGimageY = DisplayHeight*0 ;
   BGimageW = DisplayWidth-1 ;
   BGimageH = DisplayHeight-1 ;
-  picBackground = loadImage ("../ImagesUsed/LandScape/photo-1503614472-8c93d56e92ce.jpg");
+  //Concatenation of Pathways
+  String up = "..";
+  String open = "/";
+  String imagesPath = up + open ;
+  String landScapeI = "ImageUsed/landscape/";
+  //picBackground = loadImage ("../ImageUsed/landscape/photo-1618174168866-c66b9d68e983.jpg");
+  picBackground = loadImage ( imagesPath + landScapeI + "photo-1618174168866-c66b9d68e983.jpg" );
+  rogWall = loadImage ( imagesPath + );
+  CPU = loadImage ( imagesPath + );
   //
   //population
   //nightmode = false
-  int hourNightmode = hour ();
+  int hourNightmode = hour (); // 24:hour
   println(hourNightmode);
-  if ( hourNightmode>17 {
+  if ( hourNightmode>17 ) {
     nightmode=true;
-  } else if ( nightmode<05 ) {
+  } else if ( hourNightmode<05 ) {
     nightmode=true;
   } else {
     nightmode=false;
@@ -71,6 +79,8 @@ void draw() {
  background ( 0 );
  if ( nightmode==true ) tint(250, 242, 3); //Gray scale: (rgb)
  image( picBackground, BGimageX, BGimageY, BGimageW, BGimageH );
+ image( rogWall,  ); //ROG STRIX WALL PAPER: see circles in aspect ratio
+ image( CPU, );
 } //END DRAW
 //
 void keyPressed() {
