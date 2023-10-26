@@ -26,21 +26,13 @@ void setup () {
   BGimageH = DisplayHeight-1 ;
   ROGxrect = DisplayWidth*1/7 ;
   ROGyrect = DisplayHeight*1/8 ;
-  ROGW = DisplayWidth*2/7 ;
-  ROGH = DisplayHeight*1/4 ;
-  CPUxrect = ROGW ;
-  CPUyrect = DisplayHeight*5/8 ;
-  CPUW = ROGW ;
-  CPUH = ROGH ;
-  //Aspect ratio change (properties)
-  ROGxrect = DisplayWidth*1/7 ;
-  ROGyrect = DisplayHeight*1/8 ;
   ROGWrect = DisplayWidth*2/7 ;
   ROGHrect = DisplayHeight*1/4 ;
   CPUxrect = ROGxrect ;
   CPUyrect = DisplayHeight*5/8 ;
-  CPUWrect = ROGW ;
-  CPUHrect = ROGH ;
+  //Aspect ratio change (properties)
+  CPUWrect = ROGWrect ;
+  CPUHrect = ROGHrect ;
   //
   ROGW = 1920.0;
   ROGH = 1200.0;
@@ -71,13 +63,13 @@ void setup () {
  if ( CPUH > CPUW ) {
    aspectRatio = CPUW / CPUH; // smaller/large=0 if int, use float()
  //momory of smaller side
- CPUW = CPUWrect;
- CPUH = aspectRatio * CPUW;
+ CPUH = CPUHrect;
+ CPUW = aspectRatio * CPUH;
  println("CPU is portrait");
   } else {
     aspectRatio = CPUH / CPUW; // smaller/large=0 if int, use float()
  //momory of smaller side
- CPUH = CPUHrect;
+ CPUW = CPUWrect;
  CPUW = aspectRatio * CPUH;
  println("CPU is landscape");
    } //END IF
@@ -109,12 +101,16 @@ void setup () {
   //
   //population
   //nightmode = false
+  //
+  CPUxrect = CPUxrect + ( (CPUWrect-CPUW)/2 );
 }
 void draw() {
   //background(255);
   image( picBackground, BGimageX, BGimageY, BGimageW, BGimageH );
-  image( rogWall, ROGxrect, ROGyrect, ROGW, ROGH );
-  rect( ROGxrect, ROGyrect, ROGW, ROGH );
+  //rect( ROGxrect, ROGyrect, ROGW, ROGH );
+  rect( CPUxrect, CPUyrect, CPUWrect, CPUHrect );
+  println(CPUxrect);
+  //image( rogWall, ROGxrect, ROGyrect, ROGW, ROGH );
   image( CPU, CPUxrect, CPUyrect, CPUW, CPUH );
   //
   // ( [BRIGHTNESS, see keyPressed] ) tint(255, 255); //Gray scale: 1/2 (i.e 128/256= 1/2)
